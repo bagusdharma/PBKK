@@ -17,7 +17,7 @@ class MatkulController extends Controller
     public function index()
     {
         // metode Query Builder
-        $data_matkul = Matkul::all();
+        $data_matkul = DB::table('matkuls')->paginate(10);
         return view('matkul.index', compact('data_matkul'));
 
         // metode Raw Query 
@@ -25,7 +25,7 @@ class MatkulController extends Controller
         // return view('matkul.rawquery.index', compact('result_matkul'));
 
         // metode eloquent
-        // $data_matkul = Matkul::get();
+        // $data_matkul = DB::table('matkuls')->paginate(10);
         // echo json_encode($data_matkul);
         
     }

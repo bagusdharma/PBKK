@@ -38,6 +38,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{-- {{$result_dosen->links()}} --}}
                     </table>
                 </div>
             </div>

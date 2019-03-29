@@ -38,6 +38,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{$data_dosen->links()}}
                     </table>
                 </div>
             </div>

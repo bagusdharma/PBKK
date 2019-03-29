@@ -38,6 +38,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{$eloquent_dosen->links()}}
                     </table>
                 </div>
             </div>

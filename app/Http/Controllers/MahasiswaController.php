@@ -23,7 +23,7 @@ class MahasiswaController extends Controller
         ->join('mahasiswas', 'dosens.id', '=', 'mahasiswas.id_dosen')
         ->join('matkuls', 'dosens.id_matkul', '=', 'matkuls.id')
         ->select('dosens.*', 'mahasiswas.*', 'nama_matkul')
-        ->get();
+        ->paginate(10);
                         
         return view('mahasiswa.index', compact('data_mahasiswa'));
 
@@ -32,7 +32,7 @@ class MahasiswaController extends Controller
         // return view('mahasiswa.rawquery.index', compact('result_mahasiswa'));
 
         // metode eloquent
-        // $eloquent_mahasiswa = Mahasiswa::with('dosen')->get();
+        // $eloquent_mahasiswa = Mahasiswa::with('dosen')->paginate(10);
         // return view('mahasiswa.eloquent.index', compact('eloquent_mahasiswa'));
 
     }

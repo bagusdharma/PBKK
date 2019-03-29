@@ -18,18 +18,19 @@ class DosenController extends Controller
     public function index()
     {
         // metode Query Builder
-        $data_dosen = DB::table('matkuls')->join('dosens', 'matkuls.id', '=', 'dosens.id_matkul')
-                         ->get();
+        // $data_dosen = DB::table('matkuls')->join('dosens', 'matkuls.id', '=', 'dosens.id_matkul')
+                        //  ->paginate(10);
 
-        return view('dosen.index', compact('data_dosen'));
+        // return view('dosen.index', compact('data_dosen'));
 
         // metode Raw Query
         // $result_dosen = DB::select(DB::raw('select * from dosens join matkuls on matkuls.id = dosens.id_matkul'));
         // return view('dosen.rawquery.index', compact('result_dosen'));
 
         // metode Eloquent
-        // $eloquent_dosen = Dosen::with('matkul')->get();
-        // return view('dosen.eloquent.index', compact('eloquent_dosen'));
+        $eloquent_dosen = Dosen::with('matkul')->paginate(10);
+        // echo json_encode($eloquent_dosen);
+        return view('dosen.eloquent.index', compact('eloquent_dosen'));
 
     }
 

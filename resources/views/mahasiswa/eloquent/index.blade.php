@@ -42,6 +42,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{$eloquent_mahasiswa->links()}}
                     </table>
                 </div>
             </div>
