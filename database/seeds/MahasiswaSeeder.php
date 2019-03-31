@@ -16,6 +16,7 @@ class MahasiswaSeeder extends Seeder
     {
         // $matkul = DB::table('matkuls')->pluck('id');
         $dosen = DB::table('dosens')->pluck('id');
+        $matkul = DB::table('matkuls')->pluck('id');
         $faker = Faker::create('id_ID');
         $nrpmahasiswa = 9001; 
     	for($i = 1; $i <= 1000; $i++){
@@ -25,7 +26,8 @@ class MahasiswaSeeder extends Seeder
                 'nrp' => $nrpmahasiswa,
                 'nama_siswa' => $faker->name,
                 'alamat_siswa' => $faker->address,
-    			'id_dosen' => $faker->randomElement($dosen)
+                'id_dosen' => $faker->randomElement($dosen),
+                'id_matkul' =>$faker->randomElement($matkul)
             ]);
             
             $nrpmahasiswa+=1;

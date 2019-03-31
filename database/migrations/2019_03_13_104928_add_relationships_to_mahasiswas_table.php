@@ -16,6 +16,10 @@ class AddRelationshipsToMahasiswasTable extends Migration
         Schema::table('mahasiswas', function (Blueprint $table) {
             $table->foreign('id_dosen')->references('id')->on('dosens')
             ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_matkul')->references('id')->on('matkuls')
+            ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_nilai')->references('id')->on('nilais')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,7 +31,7 @@ class AddRelationshipsToMahasiswasTable extends Migration
     public function down()
     {
         Schema::table('mahasiswas', function (Blueprint $table) {
-            $table->dropForeign('mahasiswas_id_dosen_foreign');
+            //$table->dropForeign('mahasiswas_id_dosen_foreign');
         });
     }
 }
