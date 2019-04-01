@@ -25,4 +25,7 @@ Route::resource('matkul','MatkulController');
 Route::resource('dosen','DosenController');
 Route::resource('listmatkul', 'ListmatkulController');
 
+Route::resource('nilai', 'NilaiController');
+Route::get('/nilai/list_nilai/{id}', 'NilaiController@list_nilai')->name('list.nilai');
+
 // Route::resource('ambilmatkul', 'Ambil_MatkulController');
