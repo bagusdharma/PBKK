@@ -33,7 +33,7 @@
                                     <a href="{{route('matkul.edit', $nilai->id)}}" class="btn btn-warning">Edit</a>
                                     <input type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus data ?');"
                                         value="Delete">
-                                    <a href="{{route('list.nilai', $nilai->)}}" class="btn btn-success">Lihat Nilai</a>
+                                    <a href="{{route('list.nilai', $nilai->id)}}" class="btn btn-success">Lihat Nilai</a>
                                 </form>
                             </td>
                         </tr>

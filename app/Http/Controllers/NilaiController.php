@@ -102,6 +102,12 @@ class NilaiController extends Controller
     public function list_nilai($id)
     {
         $nilai = Nilai::findOrFail($id);
-        return view('nilai.list', compact('nilai'));
+        $mahasiswa = DB::table('mahasiswas')
+        ->select('id','nama_siswa')->get();
+        $matkul = DB::table('matkuls')
+        ->select('id','nama_matkul')->get();
+        $dosen = DB::table('dosens')
+        ->select('id','nama_dosen')->get();
+        return view('nilai.list', compact('nilai','mahasiswa','matkul', 'dosen'));
     }
 }
