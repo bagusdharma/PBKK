@@ -115,4 +115,19 @@ class MahasiswaController extends Controller
         $mahasiswa->delete($id);
         return redirect()->route('mahasiswa.index')->with('alert-success', 'Data Berhasil Dihapus.'); 
     }
+
+    public function list_matkul($id)
+    {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        $data_matkul = DB::select(DB::raw('select matkuls.id, matkuls.nama_matkul from matkuls join mahasiswas on matkuls.id = mahasiswas.id_matkul'));
+        // echo json_encode($data_matkul);
+        return view('matkul.list.index', compact('mahasiswa', 'data_matkul'));
+    }
+
+    // public function delete_list($id)
+    // {
+    //     $mahasiswa = Mahasiswa::findOrFail($id);
+    //     $mahasiswa->delete($id);
+    //     return redirect()->route('mahasiswa.list.index')->with('alert-success', 'Data Berhasil Dihapus.'); 
+    // }
 }

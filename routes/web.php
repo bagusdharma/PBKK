@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Route::resource('mahasiswa', 'MahasiswaController');
 
+Route::get('/mahasiswa/list_matkul/{id}', 'MahasiswaController@list_matkul')->name('list.matkul');
+Route::delete('/mahasiswa/list_matkul/{id}', 'MahasiswaController@delete_list')->name('delete.list');
+
 Route::resource('matkul','MatkulController');
 
 Route::resource('dosen','DosenController');
+
+// Route::resource('ambilmatkul', 'Ambil_MatkulController');

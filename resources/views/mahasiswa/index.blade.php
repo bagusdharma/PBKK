@@ -19,8 +19,8 @@
                             <th>Nama Mahasiswa</th>
                             <th>Alamat Mahasiswa</th>
                             <th>Dosen</th>
-                            {{-- <th>MataKuliah</th> --}}
                             <th>Action</th>
+                            <th>MataKuliah</th>
                         </tr>
                         <?php $no=1; ?>
                         @foreach($data_mahasiswa as $mahasiswa)
@@ -35,10 +35,12 @@
                                 <form method="POST" action="{{ route('mahasiswa.destroy', $mahasiswa->id) }}" accept-charset="UTF-8">
                                     <input name="_method" type="hidden" value="DELETE">
                                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
-                                    <a href="{{route('mahasiswa.edit', $mahasiswa->id)}}" class="btn btn-warning">Edit</a>
-                                    <input type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus data ?');"
+                                    <a href="{{route('mahasiswa.edit', $mahasiswa->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                    <input type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');"
                                         value="Delete">
                                 </form>
+                            </td>
+                            <td><a href="{{route('list.matkul', $mahasiswa->id)}}" class="btn btn-success btn-sm">List Matakuliah</a>
                             </td>
                         </tr>
                         @endforeach
