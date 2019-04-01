@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-6">
-            <h3>Tambah Data Matakuliah</h3>
+            {{-- <h3>Tambah Data Matakuliah</h3> --}}
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="{{route('ambilmatkul.store')}}" method="post">
+                    <form action="{{route('listmatkul.store')}}" method="post">
                         {{csrf_field()}}
                         {{-- <div class="form-group{{ $errors->has('nrp') ? ' has-error' : '' }}">
                             <select name="nrp" id="nrp" class="form-control">
@@ -19,11 +19,11 @@
                             {!! $errors->first('nrp', '<p class="help-block">:message</p>') !!}
                         </div> --}}
 
-                        <div class="form-group{{ $errors->has('nama_siswa') ? ' has-error' : '' }}">
-                            <select name="nama_siswa" id="nama_siswa" class="form-control">
+                        <div class="form-group{{ $errors->has('id_mahasiswa') ? ' has-error' : '' }}">
+                            <select name="id_mahasiswa" id="id_mahasiswa" class="form-control">
                                     <option value="">-- Pilih Nama Mahasiswa --</option>
-                                    @foreach ($data_mahasiswa as $mahasiswa)
-                                        <option value="{{$mahasiswa->id}}"> {{$mahasiswa->nama_siswa}} </option>
+                                    @foreach ($mahasiswa as $mhs)
+                                        <option value="{{$mhs->id}}"> {{$mhs->nama_siswa}} </option>
                                     @endforeach
                                 </select>    
                             {!! $errors->first('id_dosen', '<p class="help-block">:message</p>') !!}
@@ -32,11 +32,11 @@
                         <div class="form-group{{ $errors->has('id_matkul') ? ' has-error' : '' }}">
                             <select name="id_matkul" id="id_matkul" class="form-control">
                                     <option value="">-- Pilih MataKuliah --</option>
-                                    @foreach ($data_matkul as $matkul)
-                                        <option value="{{$matkul->id}}"> {{$matkul->nama_matkul}} </option>
+                                    @foreach ($matkul as $mk)
+                                        <option value="{{$mk->id}}"> {{$mk->nama_matkul}} </option>
                                     @endforeach
                                 </select>    
-                            {!! $errors->first('id_dosen', '<p class="help-block">:message</p>') !!}
+                            {!! $errors->first('id_matkul', '<p class="help-block">:message</p>') !!}
                         </div>
 
                         <div class="form-group{{ $errors->has('id_dosen') ? ' has-error' : '' }}">

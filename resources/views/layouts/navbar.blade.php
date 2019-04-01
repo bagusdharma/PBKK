@@ -8,6 +8,7 @@
             <li><a href="{{route('mahasiswa.index')}}">Mahasiswa</a></li>
             <li><a href="{{route('dosen.index')}}">Dosen</a></li>
             <li><a href="{{route('matkul.index')}}">Matakuliah</a></li>
+            <li><a href="{{route('listmatkul.index')}}">Ambil Matakuliah</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

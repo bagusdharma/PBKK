@@ -23,5 +23,6 @@ Route::delete('/mahasiswa/list_matkul/{id}', 'MahasiswaController@delete_list')-
 Route::resource('matkul','MatkulController');
 
 Route::resource('dosen','DosenController');
+Route::resource('listmatkul', 'ListmatkulController');
 
 // Route::resource('ambilmatkul', 'Ambil_MatkulController');

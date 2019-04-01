@@ -40,7 +40,7 @@
                                         value="Delete">
                                 </form>
                             </td>
-                            <td><a href="{{route('list.matkul', $mahasiswa->id)}}" class="btn btn-success btn-sm">List Matakuliah</a>
+                            <td><a href="{{route('listmatkul.index')}}" class="btn btn-success btn-sm">List Matakuliah</a>
                             </td>
                         </tr>
                         @endforeach
