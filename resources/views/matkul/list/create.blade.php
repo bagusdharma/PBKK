@@ -39,7 +39,7 @@
                             {!! $errors->first('id_matkul', '<p class="help-block">:message</p>') !!}
                         </div>
 
-                        <div class="form-group{{ $errors->has('id_dosen') ? ' has-error' : '' }}">
+                        {{-- <div class="form-group{{ $errors->has('id_dosen') ? ' has-error' : '' }}">
                             <select name="id_dosen" id="id_dosen" class="form-control">
                                     <option value="">-- Dosen Matakuliah --</option>
                                     @foreach ($dosen_matkul as $dosen)
@@ -47,7 +47,7 @@
                                     @endforeach
                                 </select>    
                             {!! $errors->first('id_dosen', '<p class="help-block">:message</p>') !!}
-                        </div>
+                        </div> --}}
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Ambil MataKuliah"></div>

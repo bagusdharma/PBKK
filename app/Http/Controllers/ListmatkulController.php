@@ -19,10 +19,13 @@ class ListmatkulController extends Controller
     {
         $data_all = DB::table('listmatkuls')
         ->join('matkuls', 'matkuls.id', '=', 'listmatkuls.id_matkul')
-        ->join('dosens', 'dosens.id', '=', 'listmatkuls.id_dosen')
+        // ->join('dosens', 'dosens.id', '=', 'listmatkuls.id_dosen')
         ->join('mahasiswas', 'mahasiswas.id', '=', 'listmatkuls.id_mahasiswa')
-        ->select('listmatkuls.id_mahasiswa', 'listmatkuls.id_matkul', 'mahasiswas.nama_siswa', 'matkuls.nama_matkul', 'dosens.nama_dosen', 'listmatkuls.id')
-        ->distinct('mahasiswas.id','listmatkuls.id')
+        // ->where('matkuls.id', '=' ,'dosens.id_matkul')
+        // ->where('mahasiswas.id', '=', 'matkuls.id_matkul')
+        // ->select('listmatkuls.id_mahasiswa', 'listmatkuls.id_matkul', 'mahasiswas.nama_siswa', 'matkuls.nama_matkul', 'dosens.nama_dosen', 'listmatkuls.id')
+        // ->distinct('mahasiswas.id','listmatkuls.id')
+        ->select('listmatkuls.id_mahasiswa', 'listmatkuls.id_matkul', 'mahasiswas.nama_siswa', 'matkuls.nama_matkul', 'listmatkuls.id')
         ->get();
         // $data_all = DB::select(DB::raw('select distinct listmatkuls.* from listmatkuls join matkuls on matkuls.id = listmatkuls.id_matkul join mahasiswas on mahasiswas.id = listmatkuls.id_mahasiswa'));
         // echo json_encode($data_all);

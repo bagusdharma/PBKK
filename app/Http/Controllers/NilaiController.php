@@ -73,7 +73,10 @@ class NilaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $nilai = Nilai::findOrFail($id);
+        $mahasiswa = DB::table('mahasiswas')
+        ->select('id','nama_siswa')->get();
+        return view('nilai.edit', compact('nilai', 'mahasiswa'));
     }
 
     /**
@@ -85,7 +88,9 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nilai = Nilai::findOrFail($id);
+        $nilai->update($request->all());
+        return redirect()->route('nilai.index')->with('alert-success', 'Data Berhasil Disimpan.'); 
     }
 
     /**

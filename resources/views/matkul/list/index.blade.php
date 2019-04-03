@@ -16,7 +16,7 @@
                             <th>NO</th>
                             <th>Mahasiswa</th>
                             <th>Mata Kuliah</th>
-                            <th>Dosen</th>
+                            {{-- <th>Dosen</th> --}}
                             <th>Action</th>
                         </tr>
                         <?php $no=1; ?>
@@ -25,7 +25,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$matkul->nama_siswa}}</td>
                             <td>{{$matkul->nama_matkul}}</td>
-                            <td> {{$matkul->nama_dosen}} </td>
+                            {{-- <td> {{$matkul->nama_dosen}} </td> --}}
                             <td>
                                 <form method="POST" action="{{ route('listmatkul.destroy', $matkul->id) }}" accept-charset="UTF-8">
                                     <input name="_method" type="hidden" value="DELETE">

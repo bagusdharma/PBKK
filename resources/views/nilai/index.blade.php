@@ -30,7 +30,7 @@
                                 <form method="POST" action="{{ route('nilai.destroy', $nilai->id) }}" accept-charset="UTF-8">
                                     <input name="_method" type="hidden" value="DELETE">
                                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
-                                    <a href="{{route('matkul.edit', $nilai->id)}}" class="btn btn-warning">Edit</a>
+                                    <a href="{{route('nilai.edit', $nilai->id)}}" class="btn btn-warning">Edit</a>
                                     <input type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus data ?');"
                                         value="Delete">
                                     <a href="{{route('list.nilai', $nilai->id)}}" class="btn btn-success">Lihat Nilai</a>
