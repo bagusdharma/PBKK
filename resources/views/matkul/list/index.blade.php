@@ -37,7 +37,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        {{-- {{$data_matkul->links()}} --}}
+                        {{$data_all->links()}}
                     </table>
                 </div>
             </div>

@@ -17,6 +17,7 @@
                             <th>Mahasiswa</th>
                             <th>Mata Kuliah</th>
                             <th>Dosen Pengajar</th>
+                            <th>Nilai Matakuliah</th>
                             <th>Action</th>
                         </tr>
                         <?php $no=1; ?>
@@ -26,6 +27,7 @@
                             <td>{{$nilai->nama_siswa}}</td>
                             <td>{{$nilai->nama_matkul}}</td>
                             <td> {{$nilai->nama_dosen}} </td>
+                            <td> {{$nilai->nilai_akhir}} </td>
                             <td>
                                 <form method="POST" action="{{ route('nilai.destroy', $nilai->id) }}" accept-charset="UTF-8">
                                     <input name="_method" type="hidden" value="DELETE">

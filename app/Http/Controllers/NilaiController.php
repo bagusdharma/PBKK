@@ -22,10 +22,12 @@ class NilaiController extends Controller
         ->join('matkuls', 'matkuls.id', '=', 'nilais.id_matkul')
         ->join('dosens', 'dosens.id', '=', 'nilais.id_dosen')
         ->join('mahasiswas', 'mahasiswas.id', '=', 'nilais.id_mahasiswa')
-        ->select('nilais.id','nilais.id_mahasiswa', 'nilais.id_matkul', 'mahasiswas.nama_siswa', 'matkuls.nama_matkul', 'dosens.nama_dosen')
+        ->select('nilais.id','nilais.id_mahasiswa', 'nilais.id_matkul', 'mahasiswas.nama_siswa', 'matkuls.nama_matkul', 'dosens.nama_dosen', 'nilais.nilai_akhir')
         // ->distinct('mahasiswas.id','listmatkuls.id')
-        ->get();
-        // echo json_encode($data_nilai);
+        ->paginate(10);
+        // $nilai = Nilai::All();
+        // $nilai_akhir = 
+        // echo json_encode($nilai);
         return view('nilai.index', compact('data_nilai'));
     }
 
@@ -50,8 +52,41 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        $nilai = Nilai::create($request->all());
-        return redirect()->route('nilai.index')->with('alert-success', 'Data Berhasil Disimpan.');    
+        // $nilai = Nilai::create($request->all());
+        $nilai = new Nilai();
+        $nilai->id_mahasiswa = $request['id_mahasiswa'];
+        $nilai->id_dosen = $request['id_dosen'];
+        $nilai->id_matkul = $request['id_matkul'];
+        $nilai->tugas = $request['tugas'];
+        $nilai->nilai_uts = $request['nilai_uts'];
+        $nilai->nilai_uas = $request['nilai_uas'];
+        
+        // echo 'nilai tugas = '.$nilai->tugas.' nilai uts = '.$nilai->nilai_uts.' nilai uas = '.$nilai->nilai_uas;
+        $nilai_akhir = (($nilai->tugas)+($nilai->nilai_uts)+($nilai->nilai_uas))/3;
+        // echo 'nilai akhir = '. $nilai_akhir;
+        if($nilai_akhir >= 86) {
+            $nilai->nilai_akhir = 'A';
+        }
+        else if($nilai_akhir >= 75 && $nilai_akhir < 86) {
+            $nilai->nilai_akhir = 'AB';
+        }
+        else if($nilai_akhir >= 65 && $nilai_akhir < 75) {
+            $nilai->nilai_akhir = 'B';
+        }
+        else if($nilai_akhir >= 55 && $nilai_akhir < 65) {
+            $nilai->nilai_akhir = 'BC';
+        }
+        else if($nilai_akhir >= 50 && $nilai_akhir < 55) {
+            $nilai->nilai_akhir = 'C';
+        }
+        else if($nilai_akhir >= 45 && $nilai_akhir < 50) {
+            $nilai->nilai_akhir = 'D';
+        }
+    
+        else  $nilai->nilai_akhir = 'E';
+
+        $nilai->save();
+        return redirect()->route('nilai.index')->with('alert-success', 'Data Berhasil Disimpan.');
     }
 
     /**
@@ -101,7 +136,10 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nilai = Nilai::findOrFail($id);
+        $nilai->delete();
+        return redirect()->route('nilai.index')->with('alert-success', 'Data Berhasil Dihapus.'); 
+
     }
 
     public function list_nilai($id)
